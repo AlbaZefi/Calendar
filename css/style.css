@@ -1,0 +1,200 @@
+@main-bg:rgb(40,40,59);
+@calendar-border:rgb(220,220,255);
+@calendar-bg:#fff;
+@calendar-standout:rgb(40,40,59);
+@calendar-color:#444;
+@calendar-fade-color:#c0c0c0;
+@body-color:#444;
+
+html, body {
+  height:100%;
+}
+body {
+  font-size:100%;
+  line-height:1.5;
+  font-family: "Roboto Condensed", sans-serif;  
+ 
+}
+
+*, *:before, *:after {
+  box-sizing:border-box;
+}
+
+.group {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+img {
+  max-width:100%;
+  height:auto;
+  vertical-align:baseline;
+}
+
+a {
+  text-decoration:none;
+}
+
+.max(@maxWidth;
+  @rules) {
+    @media only screen and (max-width: @maxWidth) {
+      @rules();
+    }
+  }
+
+.min(@minWidth;
+  @rules) {
+    @media only screen and (min-width: @minWidth) {
+      @rules();
+    }
+  }
+
+
+.calendar-wrapper {
+  width:360px;
+  margin:3em auto;
+  padding:2em;
+  border:1px solid black ;
+  border-radius:5px;
+  background-color: white;
+
+}
+table {
+  clear:both;
+  width:100%;
+  border:2px solid @calendar-border;
+  border-radius:3px;
+  border-collapse:collapse;
+  color:@calendar-color;
+}
+td {
+  height:60px;
+  text-align:center;
+  vertical-align:middle;
+  border-right:1px solid @calendar-border;
+  border-top:1px solid @calendar-border;
+  width:100% / 7;
+}
+td.not-current {
+  color:@calendar-fade-color;;
+}
+td.normal {}
+td.today {
+  font-weight:700;
+  color:@calendar-standout;
+  font-size:1.5em;
+}
+thead td {
+  border:none;
+  color:@calendar-standout;
+  text-transform:uppercase;
+  font-size:1.5em;
+}
+#btnPrev {
+  float:left;
+  margin-bottom:20px;
+  background: darken($red, 1.5%);
+  font-weight: 100;
+  &:before {
+    content:'\f104';
+    font-family:FontAwesome;
+    padding-right:4px;
+  }
+
+}
+#btnNext {
+  float:right;
+  margin-bottom:20px;
+  &:after {
+    content:'\f105';
+    font-family:FontAwesome;
+    padding-left:4px;
+  }
+}
+#btnPrev, #btnNext {
+  background:transparent;
+  border:none;
+  outline:none;
+  font-size:1em;
+  color:@calendar-fade-color;
+  cursor:pointer;
+  font-family:"Roboto Condensed", sans-serif;
+  text-transform:uppercase;
+  transition:all 0.3s ease;
+  &:hover {
+    color:@calendar-standout;
+    font-weight:bold;
+  }
+}
+h1{
+  text-align: center;
+
+}
+div.foo{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+.letter{
+  display: inline-block;
+  font-weight: 900;
+  font-size: 5em;
+  margin: 0.2em;
+  position: relative;
+  color: #00B4F1;
+  transform-style: preserve-3d;
+  perspective: 400;
+  z-index: 1;
+}
+.letter:before, .letter:after{
+  position:absolute;
+  content: attr(data-letter);
+  transform-origin: top left;
+  top:0;
+  left:0;
+}
+.letter, .letter:before, .letter:after{
+  transition: all 0.3s ease-in-out;
+}
+.letter:before{
+  color: #fff;
+  text-shadow: 
+    -1px 0px 1px rgba(255,255,255,.8),
+    1px 0px 1px rgba(0,0,0,.8);
+  z-index: 3;
+  transform:
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+}
+.letter:after{
+  color: rgba(0,0,0,.11);
+  z-index:2;
+  transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+}
+.letter:hover:before{
+  color: black;
+  transform:
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+}
+.letter:hover:after{
+  transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
+}
+p{
+  font-size: 20px;
+}
